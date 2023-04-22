@@ -18,8 +18,14 @@ const ROLE_SHOP = {
     ADMIN: 'ADMIN',
 }
 
+const HEADER = {
+    API_KEY: 'x-api-key',
+    AUTHORIZATION: 'authorization', 
+}
+
 
 module.exports = {
     HTTP_STATUS,
     ROLE_SHOP,
+    HEADER
 }

@@ -43,7 +43,7 @@ class AccessService {
                 if(!keyStore){
                     return {
                         code: 'XXX',
-                        message: 'publicKey error!',
+                        message: 'keyStore error!',
                     }
                 }
 
