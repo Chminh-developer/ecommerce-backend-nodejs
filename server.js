@@ -1,10 +1,9 @@
 require('dotenv').config();
 const app = require('./src/app');
+const config = require('./src/configs/config.mongodb')
 
-const PORT = process.env.PORT || 3055;
-
-const server = app.listen( PORT, () => { 
-    console.log(`WSV eCommerce start with ${PORT}`);
+const server = app.listen( config.app.port, () => { 
+    console.log(`WSV eCommerce start with ${config.app.port}`);
 });
 
 // process.on('SIGINT', () => {
