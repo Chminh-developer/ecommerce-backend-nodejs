@@ -2,6 +2,8 @@ const express = require('express');
 const morgan = require('morgan');
 const { default: helmet } = require('helmet');
 const compression = require('compression');
+const { checkOverload } = require('./helpers/check.connect');
+const configMongodb = require('./configs/config.mongodb');
 
 const app = express();
 // init middlewares
@@ -12,11 +14,7 @@ app.use(compression());
 // init db
 
 // int router
-app.get('/', (req, res, next) => {
-    return res.status(200).json({
-        message: 'Welcome NodeJS',
-    });
-})
+app.use('/', require('./routes'))
 
 // handling error
 
