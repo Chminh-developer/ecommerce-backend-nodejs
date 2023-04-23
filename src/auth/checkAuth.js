@@ -1,24 +1,25 @@
 'use strict'
 
 const { findById } = require("../services/apiKey.service")
-const { HEADER, HTTP_STATUS } = require("../utils/common")
+const { HEADER } = require("../utils/common")
+const { StatusCodes, ReasonPhrases } = require("../utils/httpStatusCode")
 
 const apiKey = async (req, res, next) => {
     try{
         const key = req.headers[HEADER.API_KEY]?.toString()
         if(!key){
-            return res.status(HTTP_STATUS.FORBIDDEN)
+            return res.status(StatusCodes.FORBIDDEN)
                 .json({
-                    message: 'Forbidden Error!',
+                    message: ReasonPhrases.FORBIDDEN,
                 })
         }
 
         // check objKey
         const objKey = await findById(key)
         if(!objKey){
-            return res.status(HTTP_STATUS.FORBIDDEN)
+            return res.status(StatusCodes.FORBIDDEN)
                 .json({
-                    message: 'Forbidden Error!',
+                    message: ReasonPhrases.FORBIDDEN,
                 })
         }
 
@@ -32,7 +33,7 @@ const apiKey = async (req, res, next) => {
 const permission = ( permission ) => {
     return (req, res, next) => {
         if(!req.objKey.permissions){
-            return res.status(HTTP_STATUS.FORBIDDEN)
+            return res.status(StatusCodes.FORBIDDEN)
                 .json({
                     message: 'Permission denied!',
                 })  
@@ -40,7 +41,7 @@ const permission = ( permission ) => {
 
         const validPermission = req.objKey.permissions.includes(permission)
         if(!validPermission){
-            return res.status(HTTP_STATUS.FORBIDDEN)
+            return res.status(StatusCodes.FORBIDDEN)
                 .json({
                     message: 'Permission denied!',
                 })  
@@ -50,14 +51,7 @@ const permission = ( permission ) => {
     }
 }
 
-const asyncHandler = fn => {
-    return (req, res, next) => {
-        fn(req, res, next).catch(next)
-    }
-}
-
 module.exports = {
     apiKey,
     permission,
-    asyncHandler
 }

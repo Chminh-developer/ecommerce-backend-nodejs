@@ -1,12 +1,22 @@
 @url_dev =http://127.0.0.1:3055/v1/api/
 
 ### signup
-POST {{url_dev}}/shop/signup
+POST {{url_dev}}/signup
 Content-Type: application/json
 x-api-key: 201e8bde13e41dd18b3dbf9c1016e6c5ccfc13704f638c3c5360ae82fd6d44de93281b37d075959ccc776457007be0fa681c796d893751e7322302b0fdc9c7f0
 
 {
-    "name":"TEST API 3",
-    "email":"testapi3@gmail.com",
-    "password":"shop123456"
+    "name":"TEST API 555",
+    "email":"testapi999@gmail.com",
+    "password":"shop999"
+}
+
+### signin
+POST {{url_dev}}/signin
+Content-Type: application/json
+x-api-key: 201e8bde13e41dd18b3dbf9c1016e6c5ccfc13704f638c3c5360ae82fd6d44de93281b37d075959ccc776457007be0fa681c796d893751e7322302b0fdc9c7f0
+
+{
+    "email":"testapi999@gmail.com",
+    "password":"shop999"
 }
