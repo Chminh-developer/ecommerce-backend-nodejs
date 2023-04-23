@@ -8,6 +8,19 @@ const HTTP_STATUS = {
     UNAUTHORIZED: 401,
     FORBIDDEN: 403,
     NOT_FOUND: 404,
+    CONFLICT: 409,
+    INTERNAL_SERVER_ERROR: 500
+}
+
+const REASON_HTTP_STATUS = {
+    OK: 'Success',
+    CREATED: 'Created!',
+    NO_CONTENT: 204,
+    BAD_REQUEST: 400,
+    UNAUTHORIZED: 401,
+    FORBIDDEN: 'Bad request error',
+    NOT_FOUND: 404,
+    CONFLICT: 'Conflict error',
     INTERNAL_SERVER_ERROR: 500
 }
 
@@ -26,6 +39,7 @@ const HEADER = {
 
 module.exports = {
     HTTP_STATUS,
+    REASON_HTTP_STATUS,
     ROLE_SHOP,
     HEADER
 }
