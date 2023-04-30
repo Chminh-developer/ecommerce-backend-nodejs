@@ -16,14 +16,6 @@ const createTokenPair = async ( payload, publicKey, privateKey ) => {
             expiresIn: '7 days'
         })
 
-        JWT.verify( accessToken, publicKey, (err, decode) => {
-            if(err){
-                console.error('Error verify:', err)
-            }else{
-                console.log('decode verify::', decode)
-            }
-        })
-
         return { accessToken, refreshToken }
     } catch (err){
         return err
@@ -31,35 +23,6 @@ const createTokenPair = async ( payload, publicKey, privateKey ) => {
 }
 
 const authentication = asyncHandler(async( req, res, next) => {
-    const userId = req.headers[HEADER.CLIENT_ID]
-    if(!userId){
-        throw new AuthFailureError('Invalid Request')
-    }
-
-    const keyStore = await findByUserId(userId)
-    if(!keyStore){
-        throw new NotFoundError('Not found keyStore')
-    }
-
-    const accessToken = req.headers[HEADER.AUTHORIZATION]
-    if(!accessToken){
-        throw new AuthFailureError('Invalid Request') 
-    }
-
-    try{
-        const decodeUser = JWT.verify( accessToken, keyStore.publicKey)
-        if(userId !== decodeUser.userId){
-            throw new AuthFailureError('Invalid User') 
-        }
-
-        req.keyStore = keyStore
-        return next()
-    } catch (err){
-        throw err
-    }
-})
-
-const authenticationV2 = asyncHandler(async( req, res, next) => {
     const userId = req.headers[HEADER.CLIENT_ID]
     if(!userId){
         throw new AuthFailureError('Invalid Request')
@@ -111,6 +74,5 @@ const verifyJWT = async (token, keySecret) => {
 module.exports = {
     createTokenPair,
     authentication,
-    authenticationV2,
     verifyJWT,
 }
