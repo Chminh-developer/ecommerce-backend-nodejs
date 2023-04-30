@@ -1,9 +1,7 @@
 'use strict'
 
-const { model, Schema, Types } = require('mongoose'); // Erase if already required
-
-const DOCUMENT_NAME = 'Shop'
-const COLLECTION_NAME = 'Shops'
+const { model, Schema } = require('mongoose'); // Erase if already required
+const { DOCUMENTS, COLLECTIONS } = require('../utils/common')
 
 // Declare the Schema of the Mongo model
 var shopSchema = new Schema({
@@ -36,8 +34,8 @@ var shopSchema = new Schema({
     },
 },     {
     timestamps: true,
-    collection: COLLECTION_NAME,
+    collection: COLLECTIONS.SHOP,
 },);
 
 //Export the model
-module.exports = model(DOCUMENT_NAME, shopSchema);
+module.exports = model(DOCUMENTS.SHOP, shopSchema);

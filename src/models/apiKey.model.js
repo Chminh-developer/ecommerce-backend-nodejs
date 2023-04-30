@@ -1,9 +1,7 @@
 'use strict'
 
-const { model, Schema, Types } = require('mongoose'); // Erase if already required
-
-const DOCUMENT_NAME = 'ApiKey'
-const COLLECTION_NAME = 'ApiKeys'
+const { model, Schema } = require('mongoose'); // Erase if already required
+const { DOCUMENTS, COLLECTIONS } = require('../utils/common')
 
 // Declare the Schema of the Mongo model
 var apiKeySchema = new Schema({
@@ -23,8 +21,8 @@ var apiKeySchema = new Schema({
     },
 },     {
     timestamps: true,
-    collection: COLLECTION_NAME,
+    collection: COLLECTIONS.API_KEY,
 },);
 
 //Export the model
-module.exports = model(DOCUMENT_NAME, apiKeySchema);
+module.exports = model(DOCUMENTS.API_KEY, apiKeySchema);

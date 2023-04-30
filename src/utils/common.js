@@ -14,8 +14,29 @@ const HEADER = {
     REFRESH_TOKEN: 'x-rtoken-id'
 }
 
+const DOCUMENTS = {
+    API_KEY: 'ApiKey',
+    TOKEN_KEY: 'Key',
+    SHOP: 'Shop',
+    PRODUCT: 'Product',
+    CLOTHES: 'Clothes',
+    ELECTRONIC: 'Electronic',
+    FURNITURE: 'Furniture',
+}
+
+const COLLECTIONS = {
+    API_KEY: 'ApiKeys',
+    TOKEN_KEY: 'Keys',
+    SHOP: 'Shops',
+    PRODUCT: 'Products',
+    CLOTHES: 'Clothes',
+    ELECTRONICS: 'Electronics',
+    FURNITURES: 'Furnitures',
+}
 
 module.exports = {
     ROLE_SHOP,
-    HEADER
+    HEADER,
+    DOCUMENTS,
+    COLLECTIONS,
 }

@@ -1,16 +1,14 @@
 'use strict'
 
 const { Schema, model} = require('mongoose'); // Erase if already required
-
-const DOCUMENT_NAME = 'Key'
-const COLLECTION_NAME = 'Keys'
+const { DOCUMENTS, COLLECTIONS } = require('../utils/common')
 
 // Declare the Schema of the Mongo model
 var keyTokenSchema = new Schema({
     user:{
         type: Schema.Types.ObjectId,
         required:true,
-        ref: 'Shop',
+        ref: DOCUMENTS.SHOP,
     },
     privateKey:{
         type: String,
@@ -29,9 +27,9 @@ var keyTokenSchema = new Schema({
         required: true,
     },
 },{
-    collection: COLLECTION_NAME,
+    collection: COLLECTIONS.TOKEN_KEY,
     timestamps: true,
 });
 
 //Export the model
-module.exports = model(DOCUMENT_NAME, keyTokenSchema);
+module.exports = model(DOCUMENTS.TOKEN_KEY, keyTokenSchema);
